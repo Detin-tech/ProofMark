@@ -1,4 +1,4 @@
-🕵️ ProofMark​:::stegofp,PassMark:Ben2025,build01:::
+🕵️ ProofMark​
 A no-nonsense tool for developers and creators to embed invisible fingerprint tags into their files — and detect them later. Think chain of custody for your code and content.
 
 🚀 Features
