@@ -1,4 +1,4 @@
-🕵️ ProofMark​:::stegofp,PassMark:Ben2025,build01:::
+🕵️ ProofMark
 A no-nonsense tool for developers and creators to embed invisible fingerprint tags into their files — and detect them later. Think chain of custody for your code and content.
 
 🚀 Features
@@ -8,7 +8,7 @@ Detects stego tags across cloned/stolen repos or zip dumps
 Fully offline, no dependencies, no telemetry
 🔧 Usage
 Step 1: Start
-./start.sh​:::stegofp,PassMark:Ben2025,build01:::
+./start.sh
 
 ----------------------------------------------------------------------
 
@@ -18,7 +18,7 @@ The tool embeds the tag using this format:
 :::stegofp,<YOUR-ID>,build01:::
 Example:
 
-// :::stegofp,DocGrabber:Ben2025,build01:::​:::stegofp,PassMark:Ben2025,build01:::
+// :::stegofp,DocGrabber:Ben2025,build01:::
 This tag can be invisible (\u200b) or placed in code comments.
 
 🧬 Why Use This?

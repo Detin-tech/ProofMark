@@ -1,4 +1,4 @@
-#!/bin/bash​:::stegofp,PassMark:Ben2025,build01:::
+#!/bin/bash
 
 echo ""
 echo "🕵️  Stego Utility: Proof-of-Clone Chain-of-Custody Tool"
@@ -8,7 +8,7 @@ echo "2) Detect Stego Fingerprint (scan files)"
 read -rp "Select option [1-2]: " choice
 
 case "$choice" in
-  1)​:::stegofp,PassMark:Ben2025,build01:::
+  1)
     python3 main.py
     ;;
   2)
@@ -18,4 +18,5 @@ case "$choice" in
     echo "❌ Invalid selection. Exiting."
     exit 1
     ;;
-esac​:::stegofp,PassMark:Ben2025,build01:::
+esac
+

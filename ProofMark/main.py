@@ -1,4 +1,4 @@
-#!/usr/bin/env python3​:::stegofp,PassMark:Ben2025,build01:::
+#!/usr/bin/env python3
 import os
 import shutil
 import readline
@@ -8,7 +8,7 @@ ZWSP = '\u200b'
 
 def insert_stego(content, stego_tag, mode='zwsp', interval=10):
     lines = content.splitlines()
-    out = []​:::stegofp,PassMark:Ben2025,build01:::
+    out = []
     for i, line in enumerate(lines):
         if i % interval == 0:
             if mode == 'zwsp':
@@ -18,7 +18,7 @@ def insert_stego(content, stego_tag, mode='zwsp', interval=10):
                 if stripped.startswith('#'):
                     line += f"  # {stego_tag}"
                 elif stripped.startswith('//'):
-                    line += f"  // {stego_tag}"​:::stegofp,PassMark:Ben2025,build01:::
+                    line += f"  // {stego_tag}"
                 elif '<!--' in line or '-->' in line:
                     line += f" <!-- {stego_tag} -->"
                 else:
@@ -28,7 +28,7 @@ def insert_stego(content, stego_tag, mode='zwsp', interval=10):
 
 def stego_dir(input_dir, output_dir, stego_tag, mode='zwsp', interval=10):
     for root, _, files in os.walk(input_dir):
-        for file in files:​:::stegofp,PassMark:Ben2025,build01:::
+        for file in files:
             _, ext = os.path.splitext(file)
             if ext.lower() in SUPPORTED_EXTS:
                 in_path = os.path.join(root, file)
@@ -38,7 +38,7 @@ def stego_dir(input_dir, output_dir, stego_tag, mode='zwsp', interval=10):
 
                 with open(in_path, 'r', errors='ignore') as f:
                     content = f.read()
-​:::stegofp,PassMark:Ben2025,build01:::
+
                 new_content = insert_stego(content, stego_tag, mode, interval)
                 with open(out_path, 'w') as f:
                     f.write(new_content)
@@ -48,7 +48,7 @@ def main():
     fingerprint = input("🧬 Enter your fingerprint or ID (e.g. DocGrabber:Ben2025): ").strip()
     stego_tag = f":::stegofp,{fingerprint},build01:::"
 
-    print("\n🔧 Select stego mode:")​:::stegofp,PassMark:Ben2025,build01:::
+    print("\n🔧 Select stego mode:")
     print("  1) Zero-width (invisible)")
     print("  2) Comment-based (visible in code)")
     mode_map = {'1': 'zwsp', '2': 'comment'}
@@ -58,7 +58,7 @@ def main():
     interval = input("🔁 Line interval for insertion [default: 10]: ").strip()
     interval = int(interval) if interval.isdigit() else 10
 
-    output_dir = input_dir.rstrip("/\\") + "_stego"​:::stegofp,PassMark:Ben2025,build01:::
+    output_dir = input_dir.rstrip("/\\") + "_stego"
     if os.path.exists(output_dir):
         shutil.rmtree(output_dir)
 
@@ -68,4 +68,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-​:::stegofp,PassMark:Ben2025,build01:::
+

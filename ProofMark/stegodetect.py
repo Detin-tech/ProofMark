@@ -1,4 +1,4 @@
-#!/usr/bin/env python3​:::stegofp,PassMark:Ben2025,build01:::
+#!/usr/bin/env python3
 import os
 import re
 
@@ -8,7 +8,7 @@ except ImportError:
     pass
 
 STEGO_REGEX = re.compile(r":::stegofp,([^,]+),([^:]+):::")
-​:::stegofp,PassMark:Ben2025,build01:::
+
 def scan_file(path):
     matches = []
     try:
@@ -18,7 +18,7 @@ def scan_file(path):
                 if found:
                     fingerprint, tag = found.groups()
                     matches.append((lineno, fingerprint, tag, line.strip()))
-    except Exception as e:​:::stegofp,PassMark:Ben2025,build01:::
+    except Exception as e:
         print(f"❌ Error reading {path}: {e}")
     return matches
 
@@ -28,7 +28,7 @@ def scan_dir(target_dir):
         for file in files:
             path = os.path.join(root, file)
             matches = scan_file(path)
-            if matches:​:::stegofp,PassMark:Ben2025,build01:::
+            if matches:
                 found_any = True
                 print(f"\n📁 {path}")
                 for lineno, fingerprint, tag, line in matches:
@@ -38,7 +38,7 @@ def scan_dir(target_dir):
         print("\n🚫 No stego fingerprints found.")
 
 def main():
-    print("\n📂 What do you want to scan?")​:::stegofp,PassMark:Ben2025,build01:::
+    print("\n📂 What do you want to scan?")
     print("  1) A single file")
     print("  2) An entire folder")
     mode = input("Enter choice [1-2]: ").strip()
@@ -48,7 +48,7 @@ def main():
         matches = scan_file(target)
         if matches:
             print(f"\n📁 {target}")
-            for lineno, fingerprint, tag, line in matches:​:::stegofp,PassMark:Ben2025,build01:::
+            for lineno, fingerprint, tag, line in matches:
                 print(f"  🕵️ Line {lineno}: Fingerprint = '{fingerprint}', Tag = '{tag}'")
                 print(f"     Content: {repr(line)}")
         else:
@@ -58,7 +58,7 @@ def main():
         print("\n🔍 Scanning folder for embedded stego tags...\n")
         scan_dir(target)
     else:
-        print("❌ Invalid option.")​:::stegofp,PassMark:Ben2025,build01:::
+        print("❌ Invalid option.")
 
     print("\n✅ Scan complete.")
 
