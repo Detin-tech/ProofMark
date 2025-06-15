@@ -4,16 +4,20 @@ import shutil
 import readline
 
 SUPPORTED_EXTS = {'.txt', '.md', '.py', '.sh', '.html', '.js', '.json', '.yaml', '.yml'}
+CODE_EXTS = {'.py', '.sh', '.js', '.json', '.yaml', '.yml', '.html'}
 ZWSP = '\u200b'
 
-def insert_stego(content, stego_tag, mode='zwsp', interval=10):
+def insert_stego(content, stego_tag, mode='zwsp', interval=10, ext=None):
     lines = content.splitlines()
     out = []
     for i, line in enumerate(lines):
         if i % interval == 0:
-            if mode == 'zwsp':
+            insertion_mode = mode
+            if mode == 'zwsp' and ext in CODE_EXTS:
+                insertion_mode = 'comment'
+            if insertion_mode == 'zwsp':
                 line += ZWSP + stego_tag
-            elif mode == 'comment':
+            elif insertion_mode == 'comment':
                 stripped = line.strip()
                 if stripped.startswith('#'):
                     line += f"  # {stego_tag}"
@@ -39,7 +43,7 @@ def stego_dir(input_dir, output_dir, stego_tag, mode='zwsp', interval=10):
                 with open(in_path, 'r', errors='ignore') as f:
                     content = f.read()
 
-                new_content = insert_stego(content, stego_tag, mode, interval)
+                new_content = insert_stego(content, stego_tag, mode, interval, ext.lower())
                 with open(out_path, 'w') as f:
                     f.write(new_content)
 
